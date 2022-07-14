@@ -1,0 +1,53 @@
+/* || Utility classes */
+.no-bullet {
+    list-style: none;
+}
+
+.margin-center {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.min-content {
+    width: min-content;
+}
+
+.unselectable {
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.rainbow-text {
+    background-size: 90rem 90rem;
+    background-image: linear-gradient(to right, #ff0, #f00, #000064, #0fa1a1, #ff0080, #f00, #0f0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow 5s ease 2;
+}
+
+.border-radius-1 {
+    border-radius: 1rem;
+}
+
+.border-radius-t-1 {
+    border-radius: 1rem 1rem 0 0;
+}
+
+.accent-color {
+    color: var(--accent-color);
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}

@@ -1,0 +1,192 @@
+/* https://github.com/necolas/normalize.css */
+/* small CSS file that provides better cross-browser consistency in the default styling of HTML elements. */
+@import 'normalize.css';
+
+/* icons from: https://css.gg/ */
+@import url('https://css.gg/menu-boxed.css');
+
+/* || Colors */
+@import 'colors.css';
+
+/* || Utility classes */
+@import 'utils.css';
+
+/* || General styling */
+
+/* common best practice is to define custom properties on the :root pseudo-class,
+so that it can be applied globally across your HTML document: */
+:root {
+    --padding: 0.75rem;
+    --accent-color: #ff0080;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    /* rem - relative to font-size of the root element - html */
+    /* default font size for html is 16px */
+    font-size: 14px;
+    /* 14px - size used to calculate rem */
+    line-height: 2;
+}
+
+body {
+    /* 1. I’d like to use the "Helvetica Neue" font here, please. */
+    /* 2. If you don’t have that, try Helvetica next. */
+    /* 3. If you don’t have that, try Arial next. */
+    /* 4. All else fails, use whatever you’ve got for the generic sans-serif. */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* further reading: https://www.smashingmagazine.com/2021/05/reduce-font-loading-impact-css-descriptors/ */
+    background-color: hsl(0, 0%, 98%);
+    color: #333333;
+}
+
+header,
+footer {
+    text-align: center;
+    padding: var(--padding);
+}
+
+footer {
+    background-color: var(--surface2);
+    /* margin for menu */
+    border: 1px solid var(--surface3);
+    border-bottom: none;
+    padding-bottom: 3.5rem;
+}
+
+h1 {
+    /* ex: 1.75rem => 14px * 1.75 = 24.5px */
+    font-size: 1.75rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* || navigation menu styling */
+
+/* using mobile first approach - we are writing styles for mobile first,
+then add/overwrite in media queries for wider screens */
+
+.menu {
+    background-color: var(--surface4);
+    color: var(--text1);
+    text-align: center;
+    font-weight: bold;
+    border: var(--surface4) solid 1px;
+    border-radius: 1rem 1rem 0 0;
+    border-top: none;
+    position: fixed;
+    width: 100%;
+    bottom: -11.5rem;
+    transition: bottom 0.5s ease-in-out;
+}
+
+nav {
+    width: 90%;
+    border-top: #ccc solid 1px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 42rem;
+    max-height: 11.5rem;
+    padding-bottom: var(--padding);
+}
+
+nav a {
+    padding: var(--padding);
+    color: var(--text2)
+
+    /* color: #333333; */
+}
+
+#show-menu {
+    display: none;
+}
+
+#show-menu:checked ~ .menu {
+    bottom: 0;
+}
+
+#show-menu:checked ~ .menu .show-menu-btn  {
+    color: #b16868;
+}
+
+.show-menu-btn {
+    transition: color 500ms;
+    padding: var(--padding);
+    display: block;
+}
+
+/* media queries for wider screens than mobile */
+@media (min-width: 480px) {
+    .menu {
+        line-height: 1;
+        border-radius: 0 0 1rem 1rem;
+        position: initial;
+    }
+    .show-menu-btn {
+        display: none;
+    }
+    #show-menu:checked ~ nav {
+        height: auto;
+    }
+    nav {
+        height: auto;
+        padding: var(--padding);
+        flex-direction: row;
+        justify-content: space-around;
+        border-top: none;
+    }
+    footer {
+        padding-bottom: var(--padding);
+    }
+}
+
+@media (min-width: 600px) {
+    .menu,
+    footer {
+        max-width: 110rem;
+    }
+}
+
+/* || main content styling */
+/* using universal selector * to apply styling to all children */
+
+main {
+    /* min-height: 90vh; */
+    max-width: 100rem;
+    margin-bottom: 1.5rem;
+}
+main > * {
+    padding: var(--padding);
+    border: 1px solid var(--surface3);
+}
+
+@media (min-width: 480px) {
+    main {
+        display: flex;
+        flex-direction: row;
+    }
+    main article {
+        /* or flex: 2 */
+        flex-grow: 2;
+        flex-basis: 0;
+    }
+    main aside {
+        /* or flex: 1 */
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+}
