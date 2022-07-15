@@ -14,28 +14,32 @@
 
 </head>
 <body class="surface1">
-    <input type="checkbox" id="show-menu" />
-    <div class="menu rad-shadow margin-center">
-        <label for="show-menu" class="show-menu-btn margin-center min-content">
+    <input type="checkbox" id="show-menu" hidden />
+    <input type="checkbox" id="change-color-theme" hidden />
+
+    <div class="menu margin-center surface4 rad-shadow">
+        <label for="show-menu" class="show-menu-btn margin-center min-content p-1">
             <i class="gg-menu-boxed"></i>
         </label>
 
-        <nav class="margin-center">
+        <nav class="margin-center p-1">
             <a href="/">Home</a>
             <a href="/colors.html">Colors</a>
             <a href="#">Cards</a>
             <a href="#">Grid</a>
             <a href="#">About</a>
-            <a href="#">Contact</a>
+            <label for="change-color-theme">
+                <i class="gg-dark-mode"></i>
+            </label>
         </nav>
     </div>
 
-    <header>
+    <header class="p-1">
         <h1 class="rainbow-text unselectable">a little bit of CSS</h1>
     </header>
 
     <main class="margin-center">
-        <article>
+        <article class="p-1">
             <form id="theme-switcher">
                 <div>
                     <input checked type="radio" id="auto" name="theme" value="auto">
@@ -68,28 +72,38 @@
                         <span class="swatch text2 rad-shadow"></span>
                         Text Color 2
                     </h1>
-                    <br>
                     <p class="text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     <p class="text2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <br />
                 </div>
             </section>
 
             <section>
-                <div class="surface-samples">
+                <div class="surface-samples p-1">
                     <div class="surface1 rad-shadow">1</div>
                     <div class="surface2 rad-shadow">2</div>
                     <div class="surface3 rad-shadow">3</div>
                     <div class="surface4 rad-shadow">4</div>
                 </div>
             </section>
+
+            <section>
+                <div class="surface-samples p-1">
+                    <div class="info rad-shadow">I</div>
+                    <div class="success rad-shadow">S</div>
+                    <div class="warning rad-shadow">W</div>
+                    <div class="failure rad-shadow">F</div>
+                </div>
+            </section>
         </article>
-        <aside>
+        <div class="flex-separator"></div>
+        <aside class="p-1">
             <h2>Use HSL colors</h2>
             <p>Info about css colors: <a href="https://web.dev/learn/css/color/">web.dev/learn/css/color</a>.</p>
         </aside> 
     </main>
 
-    <footer class="margin-center border-radius-t-1" >
+    <footer class="margin-center border-radius-t-1 surface4" >
         <small>Original footer content</small>
         <small>&copy; 2022 - you know we copy</small>
     </footer>

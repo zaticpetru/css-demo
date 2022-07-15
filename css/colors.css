@@ -46,7 +46,36 @@
     --surface4-dark: hsl(var(--brand-hue) 5% 25%);
 
     --surface-shadow-dark: var(--brand-hue) 50% 3%;
-    --shadow-strength-dark: .8
+    --shadow-strength-dark: .8;
+
+    --light-saturation: .66;
+    --dark-saturation: .40; /* calc(var(--light-saturation) * .6); */
+    --light-lightness: .57;
+    --dark-lightness: .43; /* calc(var(--light-lightness) * .75); */
+
+    --info-hue: 203;
+    --info-hsl: var(--info-hue)
+        calc(100% * var(--saturation))
+        calc(100% * var(--lightness));
+    --info: hsl(var(--info-hsl));
+
+    --success-hue: 120;
+    --success-hsl: var(--success-hue)
+        calc(100% * var(--saturation))
+        calc(100% * var(--lightness));
+    --success: hsl(var(--success-hsl));
+
+    --warning-hue: 40;
+    --warning-hsl: var(--warning-hue)
+        calc(100% * var(--saturation))
+        calc(100% * var(--lightness));
+    --warning: hsl(var(--warning-hsl));
+
+    --failure-hue: 2;
+    --failure-hsl: var(--failure-hue)
+        calc(100% * var(--saturation))
+        calc(100% * var(--lightness));
+    --failure: hsl(var(--failure-hsl));
 }
 
 /** Using Color schemes */
@@ -62,6 +91,8 @@
     --surface4: var(--surface4-light);
     --surface-shadow: var(--surface-shadow-light);
     --shadow-strength: var(--shadow-strength-light);
+    --saturation: var(--light-saturation);
+    --lightness: var(--light-lightness);
 }
 
 /* using media query to set dark theme automatically */
@@ -77,6 +108,8 @@
         --surface4: var(--surface4-dark);
         --surface-shadow: var(--surface-shadow-dark);
         --shadow-strength: var(--shadow-strength-dark);
+        --saturation: var(--dark-saturation);
+        --lightness: var(--dark-lightness);
     }
 }
 
@@ -91,6 +124,8 @@
     --surface4: var(--surface4-light);
     --surface-shadow: var(--surface-shadow-light);
     --shadow-strength: var(--shadow-strength-light);
+    --saturation: var(--light-saturation);
+    --lightness: var(--light-lightness);
 }
 
 [color-scheme="dark"] {
@@ -104,6 +139,28 @@
     --surface4: var(--surface4-dark);
     --surface-shadow: var(--surface-shadow-dark);
     --shadow-strength: var(--shadow-strength-dark);
+    --saturation: var(--dark-saturation);
+    --lightness: var(--dark-lightness);
+}
+
+.info {
+    background-color: var(--info);
+    color: var(--text1);
+}
+
+.success {
+    background-color: var(--success);
+    color: var(--text1);
+}
+
+.warning {
+    background-color: var(--warning);
+    color: var(--text1);
+}
+
+.failure {
+    background-color: var(--failure);
+    color: var(--text1);
 }
 
 .brand {
@@ -152,6 +209,7 @@
     font-size: 3rem;
     font-weight: 200;
     flex-grow: 1;
+    flex-basis: 0;
 }
 
 .text-samples {
