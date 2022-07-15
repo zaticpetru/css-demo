@@ -51,3 +51,26 @@
         background-position: 0% 0%;
     }
 }
+
+.p-1 {
+    padding: var(--base-spacing);
+}
+
+.p-2 {
+    padding: calc(var(--base-spacing) * 2);
+}
+
+.m-1 {
+    padding: var(--base-spacing);
+}
+
+.m-2 {
+    padding: calc(var(--base-spacing) * 2);
+}
+
+.flex-separator {
+    align-self: stretch;
+    margin: 1rem;
+
+    border: var(--text1) 1px solid;
+}
