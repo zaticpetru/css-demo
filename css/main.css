@@ -4,6 +4,7 @@
 
 /* icons from: https://css.gg/ */
 @import url('https://css.gg/menu-boxed.css');
+@import url('https://css.gg/dark-mode.css');
 
 /* || Colors */
 @import 'colors.css';
@@ -16,7 +17,7 @@
 /* common best practice is to define custom properties on the :root pseudo-class,
 so that it can be applied globally across your HTML document: */
 :root {
-    --padding: 0.75rem;
+    --base-spacing: 0.75rem;
     --accent-color: #ff0080;
 }
 
@@ -27,8 +28,10 @@ so that it can be applied globally across your HTML document: */
 html {
     /* rem - relative to font-size of the root element - html */
     /* default font size for html is 16px */
-    font-size: 14px;
     /* 14px - size used to calculate rem */
+    font-size: 16px;
+    /* line height - used to set distances between lines */
+    /* 2 -> 2 * element's own font size  */
     line-height: 2;
 }
 
@@ -39,21 +42,18 @@ body {
     /* 4. All else fails, use whatever you’ve got for the generic sans-serif. */
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     /* further reading: https://www.smashingmagazine.com/2021/05/reduce-font-loading-impact-css-descriptors/ */
-    background-color: hsl(0, 0%, 98%);
-    color: #333333;
 }
 
 header,
 footer {
     text-align: center;
-    padding: var(--padding);
 }
 
 footer {
-    background-color: var(--surface4);
-    /* margin for menu */
     border: 1px solid var(--surface3);
     border-bottom: none;
+    /* creating space for fixed menu on bottom for mobile view */
+    padding: var(--base-spacing);
     padding-bottom: 3.5rem;
 }
 
@@ -63,6 +63,7 @@ h1 {
 }
 
 a {
+    color: inherit;
     text-decoration: none;
 }
 
@@ -80,51 +81,57 @@ img {
 then add/overwrite in media queries for wider screens */
 
 .menu {
-    background-color: var(--surface4);
-    color: var(--text1);
-    text-align: center;
-    font-weight: bold;
-    border: var(--surface4) solid 1px;
-    border-radius: 1rem 1rem 0 0;
-    border-top: none;
     position: fixed;
     width: 100%;
-    bottom: -11.5rem;
+    bottom: -12.5rem;
+
+    text-align: center;
+    font-weight: bold;
+
+    border: var(--surface3) solid 1px;
+    border-radius: 1rem 1rem 0 0;
+
+    /* open menu animation from bottom: -11.5 rem to 0 */
     transition: bottom 0.5s ease-in-out;
 }
 
-nav {
-    width: 90%;
-    border-top: #ccc solid 1px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    max-width: 42rem;
-    max-height: 11.5rem;
-    padding-bottom: var(--padding);
-}
-
-nav a {
-    padding: var(--padding);
-    color: var(--text2)
-}
-
-#show-menu {
-    display: none;
-}
-
 #show-menu:checked ~ .menu {
+    /* animation triggered on :checked state of checkbox for menu  */
     bottom: 0;
+}
+.show-menu-btn {
+    display: block;
+    transition: color 500ms;
 }
 
 #show-menu:checked ~ .menu .show-menu-btn  {
     color: #b16868;
 }
 
-.show-menu-btn {
-    transition: color 500ms;
-    padding: var(--padding);
-    display: block;
+
+
+nav {
+    width: 90%;
+    max-width: 42rem;
+    max-height: 12.5rem;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    
+    padding-bottom: var(--base-spacing);
+
+    border-top: var(--text1) solid 1px;
+}
+
+nav a,
+nav label {
+    padding: var(--base-spacing);
+}
+
+nav .gg-dark-mode {
+    transition: color 1s ease-in;
 }
 
 /* media queries for wider screens than mobile */
@@ -142,13 +149,14 @@ nav a {
     }
     nav {
         height: auto;
-        padding: var(--padding);
+
         flex-direction: row;
         justify-content: space-around;
+
         border-top: none;
     }
     footer {
-        padding-bottom: var(--padding);
+        padding-bottom: var(--base-spacing);
     }
 }
 
@@ -163,20 +171,16 @@ nav a {
 /* using universal selector * to apply styling to all children */
 
 main {
-    /* min-height: 90vh; */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     max-width: 100rem;
     margin-bottom: 1.5rem;
 }
-main > * {
-    padding: var(--padding);
-    border: 1px solid var(--text2);
-    border-bottom: none;
-    border-top: none;
-}
 
-@media (min-width: 480px) {
+@media (min-width: 600px) {
     main {
-        display: flex;
+        /* display: flex; */
         flex-direction: row;
     }
     main article {
