@@ -196,9 +196,9 @@
     color: var(--text2)
 }
 
+/* TODO delete surface-samples classes */
 .surface-samples {
     display: flex;
-    width: 100%;
 }
 
 .surface-samples > * {
@@ -210,11 +210,6 @@
     font-weight: 200;
     flex-grow: 1;
     flex-basis: 0;
-}
-
-.text-samples {
-    display: grid;
-    gap: 1ch;
 }
 
 .swatch {
