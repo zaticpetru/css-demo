@@ -28,18 +28,6 @@
     animation: rainbow 5s ease 2;
 }
 
-.border-radius-1 {
-    border-radius: 1rem;
-}
-
-.border-radius-t-1 {
-    border-radius: 1rem 1rem 0 0;
-}
-
-.accent-color {
-    color: var(--accent-color);
-}
-
 @keyframes rainbow {
     0% {
         background-position: 0% 0%;
@@ -52,6 +40,26 @@
     }
 }
 
+.border-radius-1 {
+    border-radius: 1rem;
+}
+
+.border-radius-t-1 {
+    border-radius: 1rem 1rem 0 0;
+}
+
+.accent-color {
+    color: var(--accent);
+}
+
+.m-1-y {
+    /* https://web.dev/learn/css/logical-properties/ */
+    margin-block: var(--base-spacing);
+    /* equivalent to: */
+    /* margin-top: var(--base-spacing); */
+    /* margin-bottom: var(--base-spacing); */
+}
+
 .p-1 {
     padding: var(--base-spacing);
 }
@@ -61,12 +69,41 @@
 }
 
 .m-1 {
-    padding: var(--base-spacing);
+    margin: var(--base-spacing);
 }
 
 .m-2 {
-    padding: calc(var(--base-spacing) * 2);
+    margin: calc(var(--base-spacing) * 2);
 }
+
+.m-2-y {
+    margin-block: calc(var(--base-spacing) * 2);
+}
+
+.m-1-x {
+    margin-inline: var(--base-spacing);
+}
+
+.m-2-x {
+    margin-inline: calc(var(--base-spacing) * 2);
+}
+
+.p-1-x {
+    padding-inline: var(--base-spacing);
+}
+
+.p-2-x {
+    padding-inline: calc(var(--base-spacing) * 2);
+}
+
+.p-1-y {
+    padding-block: var(--base-spacing);
+}
+
+.p-2-y {
+    padding-block: calc(var(--base-spacing) * 2);
+}
+
 
 .flex-separator {
     align-self: stretch;
@@ -75,11 +112,19 @@
     border: var(--text1) 1px solid;
 }
 
-.ex {
-    height: 200px;
+.border-left-separator {
+    border-left: var(--text1) 2px solid;
 }
+
+.ex-section {
+    display: grid;
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/minmax */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: var(--base-spacing);
+}
+
 .ex-area {
-    display: block;
+    min-height: 200px;
 }
 
 .ex-container {
@@ -88,14 +133,13 @@
     overflow: hidden;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 1;
 }
 
 .line-decorated {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-    /* gap: 1rem; */
 }
 
 .line-decorated::before,

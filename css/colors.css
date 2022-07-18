@@ -4,11 +4,23 @@
     --brand-saturation: 100%;
     --brand-lightness: 34%;
 
+    --accent-hue: 330;
+    --accent-saturation: 100%;
+    --accent-lightness: 50%;
+    
+    
     /*? Light theme */
+    /* building light brand color from base variables */
     --brand-light: hsl(var(--brand-hue),
             var(--brand-saturation),
             var(--brand-lightness));
 
+    --accent-light: hsl(
+        var(--accent-hue)
+        calc(var(--accent-saturation) / 1.25)
+        calc(var(--accent-lightness) / 1.25)
+    );
+    
     /*  In a light theme, text should be very dark.
     Notice how the lightness of the following colors is low,
     well under 50% */
@@ -29,10 +41,17 @@
     --shadow-strength-light: .02;
 
     /*? Dark theme */
+    /* building dark brand color from base variables */
     --brand-dark: hsl(
         var(--brand-hue)
         calc(var(--brand-saturation) / 2)
         calc(var(--brand-lightness) / 1.5)
+    );
+
+    --accent-dark: hsl(
+        var(--accent-hue)
+        var(--accent-saturation)
+        var(--accent-lightness)
     );
 
     /* dark themes need to have light text colors,
@@ -53,6 +72,7 @@
     --light-lightness: .57;
     --dark-lightness: .43; /* calc(var(--light-lightness) * .75); */
 
+    /* Status colors are changed with current theme lightness and saturation */
     --info-hue: 203;
     --info-hsl: var(--info-hue)
         calc(100% * var(--saturation))
@@ -83,14 +103,19 @@
     /* light default */
     color-scheme: light;
     --brand: var(--brand-light);
+    --accent: var(--accent-light);
+
     --text1: var(--text1-light);
     --text2: var(--text2-light);
+
     --surface1: var(--surface1-light);
     --surface2: var(--surface2-light);
     --surface3: var(--surface3-light);
     --surface4: var(--surface4-light);
+
     --surface-shadow: var(--surface-shadow-light);
     --shadow-strength: var(--shadow-strength-light);
+
     --saturation: var(--light-saturation);
     --lightness: var(--light-lightness);
 }
@@ -100,6 +125,7 @@
     :root {
         color-scheme: dark;
         --brand: var(--brand-dark);
+        --accent: var(--accent-dark);
         --text1: var(--text1-dark);
         --text2: var(--text2-dark);
         --surface1: var(--surface1-dark);
@@ -116,6 +142,8 @@
 [color-scheme="light"] {
     color-scheme: light;
     --brand: var(--brand-light);
+    --accent: var(--accent-light);
+
     --text1: var(--text1-light);
     --text2: var(--text2-light);
     --surface1: var(--surface1-light);
@@ -131,6 +159,8 @@
 [color-scheme="dark"] {
     color-scheme: dark;
     --brand: var(--brand-dark);
+    --accent: var(--accent-dark);
+
     --text1: var(--text1-dark);
     --text2: var(--text2-dark);
     --surface1: var(--surface1-dark);
@@ -168,32 +198,36 @@
     background-color: var(--brand);
 }
 
-.surface1 {
+.surface-1 {
     background-color: var(--surface1);
     color: var(--text2);
 }
 
-.surface2 {
+.surface-2 {
     background-color: var(--surface2);
     color: var(--text2);
 }
 
-.surface3 {
+.surface-3 {
     background-color: var(--surface3);
     color: var(--text1);
 }
 
-.surface4 {
+.surface-4 {
     background-color: var(--surface4);
     color: var(--text1);
 }
 
-.text1 {
-    color: var(--text1)
+.text-1 {
+    color: var(--text1);
 }
 
-.text2 {
-    color: var(--text2)
+.text-2 {
+    color: var(--text2);
+}
+
+.accent {
+    color: var(--accent);
 }
 
 /* TODO delete surface-samples classes */
@@ -220,12 +254,16 @@
     border-radius: 50%;
 }
 
-.swatch.text1 {
+.swatch.text-1 {
     background-color: var(--text1);
 }
 
-.swatch.text2 {
+.swatch.text-2 {
     background-color: var(--text2);
+}
+
+.swatch.accent {
+    background-color: var(--accent);
 }
 
 /* read again how shadow works */
